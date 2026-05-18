@@ -28,6 +28,11 @@ def delete_task(task):
         print(f"🗑️  Task deleted: {task}")
     else:
         print("Task not found!")
+def clear_all_tasks():
+    global tasks
+    tasks = []
+    print("All tasks cleared!")
+    # TODO: Add confirmation
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
