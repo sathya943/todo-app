@@ -51,5 +51,4 @@ if __name__ == "__main__":
     else:
         show_tasks()
         
-print("This is a simple change.")Change 1
-Change 2
+print("This is a simple change.")
