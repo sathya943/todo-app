@@ -16,11 +16,12 @@ def remove_task(index):
 
 def show_tasks():
     if not tasks:
-        print("No tasks available.")
+        print("📋 No tasks yet! Add some tasks.")
     else:
-        print(f"\nTotal tasks: {len(tasks)}")
+        print("\n📋 === YOUR TODO LIST ===")
         for i, task in enumerate(tasks, 1):
-            print(f"Task #{i}:: {task.upper()}")
+            print(f"{i}. {task}")
+        print("=======================")
 
 def delete_task(task):
     if task in tasks:
