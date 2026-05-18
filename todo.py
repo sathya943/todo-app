@@ -1,41 +1,47 @@
 # todo.py
 import sys
+import json
+import os
 
-tasks = []
+FILE_NAME = "tasks.json"
+
+def load_tasks():
+    if os.path.exists(FILE_NAME):
+        try:
+            with open(FILE_NAME, "r") as f:
+                return json.load(f)
+        except:
+            return []
+    return []
+
+def save_tasks(tasks):
+    with open(FILE_NAME, "w") as f:
+        json.dump(tasks, f, indent=2)
+
+tasks = load_tasks()
 
 def add_task(task):
     tasks.append(task)
+    save_tasks(tasks)
     print(f"✅ Task added: {task}")
 
 def remove_task(index):
     if 0 <= index < len(tasks):
         removed = tasks.pop(index)
-        print(f"🗑️  Task removed: {removed}")
+        save_tasks(tasks)
+        print(f"🗑️ Task removed: {removed}")
     else:
-        print("Invalid task number!")
+        print("❌ Invalid task number!")
 
 def show_tasks():
     if not tasks:
         print("📋 No tasks yet! Add some tasks.")
-
     else:
         print("\n📋 === YOUR TODO LIST ===")
+        print(f"Total tasks: {len(tasks)}")
         for i, task in enumerate(tasks, 1):
-
             print(f"{i}. {task}")
         print("=======================")
-
-def delete_task(task):
-    if task in tasks:
-        tasks.remove(task)
-        print(f"🗑️  Task deleted: {task}")
-    else:
-        print("Task not found!")
-def clear_all_tasks():
-    global tasks
-    tasks = []
-    print("All tasks cleared!")
-    # TODO: Add confirmation
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
@@ -47,6 +53,8 @@ if __name__ == "__main__":
             try:
                 remove_task(int(sys.argv[2]) - 1)
             except:
-                print("Please provide a valid number")
+                print("❌ Please provide a valid number")
+        else:
+            print("Usage: python todo.py [add|list|remove] [text/number]")
     else:
         show_tasks()
