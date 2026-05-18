@@ -15,10 +15,11 @@ def remove_task(index):
         print("Invalid task number!")
 
 def show_tasks():
+    '''Displays the list of tasks with their corresponding numbers.'''
     if not tasks:
-        print("📋 No tasks yet!")
+        print("No tasks in the list!")
     else:
-        print("\n📋 Your Tasks:")
+        print("📋 Your Tasks:")
         for i, task in enumerate(tasks, 1):
             print(f"{i}. {task}")
 
