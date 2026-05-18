@@ -17,9 +17,11 @@ def remove_task(index):
 def show_tasks():
     if not tasks:
         print("📋 No tasks yet! Add some tasks.")
+
     else:
         print("\n📋 === YOUR TODO LIST ===")
         for i, task in enumerate(tasks, 1):
+
             print(f"{i}. {task}")
         print("=======================")
 
