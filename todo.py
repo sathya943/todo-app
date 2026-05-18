@@ -22,6 +22,13 @@ def show_tasks():
         for i, task in enumerate(tasks, 1):
             print(f"{i}. {task}")
 
+def delete_task(task):
+    if task in tasks:
+        tasks.remove(task)
+        print(f"🗑️  Task deleted: {task}")
+    else:
+        print("Task not found!")
+
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         if sys.argv[1] == "add" and len(sys.argv) > 2:
