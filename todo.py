@@ -28,7 +28,9 @@ def delete_task(task):
         print(f"🗑️  Task deleted: {task}")
     else:
         print("Task not found!")
-
+def clear_tasks(): #bug-fixed
+    tasks.clear()
+    print("🧹 All tasks cleared!")
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         if sys.argv[1] == "add" and len(sys.argv) > 2:
