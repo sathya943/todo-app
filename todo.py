@@ -15,12 +15,12 @@ def remove_task(index):
         print("Invalid task number!")
 
 def show_tasks():
-    if not tasks:
+    if not tasks: # Check if the list is empty
         print("No tasks available.")
     else:
         print(f"\nTotal tasks: {len(tasks)}")
         for i, task in enumerate(tasks, 1):
-            print(f"Task #{i}:: {task.upper()}")
+            print(f"Task #{i}: {task.upper()}")
 
 def delete_task(task):
     if task in tasks:
